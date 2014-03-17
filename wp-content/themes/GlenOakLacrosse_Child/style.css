@@ -1,0 +1,11 @@
+/*
+Theme Name: GlenOak Lacrosse Club Theme Child Theme
+Theme URI: http://www..com/
+Description: This is a custom child theme Brent Ransom has created.
+Author: Brent Ransom
+Author URI: http://.com
+Template: GlenOakLacrosse
+Version: 0.1
+*/
+
+@import url("../GlenOakLacrosse/style.css");
