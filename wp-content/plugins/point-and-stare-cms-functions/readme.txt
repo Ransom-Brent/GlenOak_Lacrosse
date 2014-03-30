@@ -51,8 +51,12 @@ BACK EVERYTHING UP then simply overwrite and everything should be as set.
 
 == Changelog ==
 
+= 3.0.4 =
+* More antibugging, issetting and generally pretending that I know what I'm doing
+* Cleaned up JQuery call - made to use inbuilt WP script unless stated - and moved to footer
+
 = v3.0.3 =
-* Removed admin font change as it was conflicting and ugly.
+* Removed admin font change as it was conflicting and ugly
 
 = v3.0.2 =
 * Fixed small issue with login logo

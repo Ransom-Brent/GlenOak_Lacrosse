@@ -56,9 +56,56 @@
 <body <?php body_class(); ?>>
 	
 	<header>
-			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-			<div class="description"><?php bloginfo('description'); ?></div>
-			
-			<nav></nav>
-			
+			<!--<h1><a href="<?php echo get_option('home'); ?>/"><img src="<?php bloginfo('template_url'); ?>/images/" /></a></h1>-->
+			<!--<div class="description"><?php bloginfo('description'); ?></div>-->
+		
+		<div class="nav-bg">
+			<div class="row">
+				<div class="xxlarge-12 xlarge-12 large-12 medium-12 columns">
+					<nav class="clearfix">
+						<?php 
+							wp_nav_menu(array(
+							'menu' => 'Primary Menu', 
+							'container_id' => 'cssmenu', 
+							'walker' => new CSS_Menu_Maker_Walker()
+							)); 
+						?>
+					</nav>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise -->
+			<!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
+			<video width="640" height="360" controls>
+				<!-- MP4 must be first for iPad! -->
+				<source src="<?php echo get_field('mp4_main_video'); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
+				<source src="<?php echo get_field('ogv_main_video'); ?>" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
+				<!-- fallback to Flash: -->
+					<object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
+						<!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
+						<param name="movie" value="<?php echo get_field('flash_main_video'); ?>" />
+						<param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
+						<!-- fallback image. note the title field below, put the title of the video there -->
+							<img src="<?php echo get_field('poster_image_main'); ?>" width="640" height="360" alt="__TITLE__" title="No video playback capabilities, please download the video below" />
+					</object>
+			</video>
+		</div>
+		
+		<div class="large-6 medium-6 small-6 columns">
+			<div class="row">
+				<div class="large-12 medium-12 small-12 columns">
+					<a href="<?php echo get_field('link_one', 'option'); ?>"><?php echo get_field('link_one_text', 'option'); ?></a>
+				</div>
+			</div>
+		</div>
+		<div class="large-6 medium-6 small-6 columns">
+			<div class="row">
+				<div class="large-12 medium-12 small-12 columns">
+					<a href="<?php echo get_field('link_two', 'option'); ?>"><?php echo get_field('link_two_text', 'option'); ?></a>
+				</div>
+			</div>
+		</div>
+		
 	</header>
