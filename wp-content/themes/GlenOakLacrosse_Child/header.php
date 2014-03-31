@@ -42,8 +42,8 @@
 	</title>
 	
 	<!-- Stylesheets -->
-	<link href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" />
-	<link href="<?php bloginfo('template_url'); ?>/css/reset.css" type="text/css" />
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	
@@ -80,17 +80,24 @@
 			<!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
 			<video width="640" height="360" controls>
 				<!-- MP4 must be first for iPad! -->
-				<source src="<?php echo get_field('mp4_main_video'); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
-				<source src="<?php echo get_field('ogv_main_video'); ?>" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
+				<source src="<?php echo get_field('mp4_main_video', 'option'); ?>" type="video/mp4" /><!-- Safari / iOS video    -->
+				<source src="<?php echo get_field('ogv_main_video', 'option'); ?>" type="video/ogg" /><!-- Firefox / Opera / Chrome10 -->
 				<!-- fallback to Flash: -->
 					<object width="640" height="360" type="application/x-shockwave-flash" data="__FLASH__.SWF">
 						<!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
-						<param name="movie" value="<?php echo get_field('flash_main_video'); ?>" />
+						<param name="movie" value="<?php echo get_field('flash_main_video', 'option'); ?>" />
 						<param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" />
 						<!-- fallback image. note the title field below, put the title of the video there -->
-							<img src="<?php echo get_field('poster_image_main'); ?>" width="640" height="360" alt="__TITLE__" title="No video playback capabilities, please download the video below" />
+							<?php $name = get_field('image_id'); if ($name): ?>
+								<img src="<?php echo get_field('poster_image_main', 'option'); ?>" width="100%" height="100%" />
+							<?php endif; ?>
 					</object>
 			</video>
+			<div class="large-12 medium-12 small-12 columns">
+				<?php echo get_field('video_callout', 'option'); ?><br>
+				<a href-"<?php echo get_field('link_one_url', 'option'); ?>"><?php echo get_field('link_one_title', 'option'); ?></a>
+				<a href-"<?php echo get_field('link_one_url', 'option'); ?>"><?php echo get_field('link_one_title', 'option'); ?></a>
+			</div>
 		</div>
 		
 		<div class="large-6 medium-6 small-6 columns">

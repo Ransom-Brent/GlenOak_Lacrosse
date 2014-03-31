@@ -47,14 +47,18 @@
 							<?php echo get_field('hco4_text'); ?>
 						</a>
 					</div>
+									
+					<div class="large-3 medium-3 small-12">
+						<a href="<?php echo get_field('callout_five_link'); ?>"><?php echo get_field('hco5_text'); ?></a>
+					</div>
 				</div>
 				
 				<div class="row">
 					<div class="large-3 medium-3 small-12 columns">
-						<?php eco get_field('section3_title'); ?>
+						<?php eco get_field('section4_title'); ?>
 					</div>
 					<div class="large-9 medium-9 small-9 columns">
-						<?php eco get_field('section3_text_form'); ?>
+						<?php eco get_field('section4_text_form'); ?>
 					</div>
 				</div>
 				
@@ -64,16 +68,10 @@
 					</div>
 				</div>
 				
-				<?php wp_link_pages(array('before' => 'Pages: ', 'next_or_number' => 'number')); ?>
-
 			</article>
-
-			<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 
 		</section>
 		
-		<?php comments_template(); ?>
-
 		<?php endwhile; endif; ?>
 
 		 <?php if(!(is_page('home'))  { ?>
